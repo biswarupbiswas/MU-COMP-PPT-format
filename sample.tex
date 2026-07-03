@@ -88,10 +88,25 @@
     \end{column}
     \begin{column}{0.55\textwidth}
       \centering
-      % Perfect 1:1 square video box without any PNG poster (completely vector white background using \rule)
+      % Clean vector play card placeholder (no PNG image files used)
       \embedmpfour{%
-        {\color{white}\rule{0.6\textheight}{0.6\textheight}}%
+        \begin{pgfpicture}
+          % Draw a light gray background card
+          \pgfsetfillcolor{black!5}
+          \pgfpathrectangle{\pgfpointorigin}{\pgfpoint{0.6\textheight}{0.6\textheight}}
+          \pgfusepath{fill}
+          % Draw a thin gray border
+          \pgfsetlinewidth{1pt}
+          \pgfsetcolor{black!15}
+          \pgfpathrectangle{\pgfpointorigin}{\pgfpoint{0.6\textheight}{0.6\textheight}}
+          \pgfusepath{stroke}
+          % Draw a large play icon in the center
+          \pgfsetcolor{citeteal}
+          \pgftransformshift{\pgfpoint{0.3\textheight}{0.3\textheight}}
+          \pgftext{\scalebox{4}{$\blacktriangleright$}}
+        \end{pgfpicture}%
       }{KPP_2D_WENO.mp4}
+
 
       \vskip0.5em
       \scriptsize{Video: KPP 2D WENO simulation (click to play).}
