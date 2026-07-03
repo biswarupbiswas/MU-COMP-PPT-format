@@ -15,3 +15,7 @@
 
 # Synctex
 *.synctex.gz
+
+# Latexmk
+*.fdb_latexmk
+*.fls
