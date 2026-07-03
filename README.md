@@ -75,8 +75,31 @@ A `Makefile` is provided to automate the compilation pipeline and auxiliary file
 If you use VS Code with the [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) extension, the settings configured in `.vscode/settings.json` will automatically load a recipe named `pdflatex -> biber -> pdflatex x2`. 
 Just trigger a build (default shortcut: `Ctrl+Alt+B`), and the editor will compile the document and clean up auxiliary files automatically.
 
-### Method 3: Manual Terminal Compilation
-Run the following commands in sequence:
+### Method 3: TeXstudio Configuration
+To compile using [TeXstudio](https://www.texstudio.org/):
+1. Open TeXstudio and open `sample.tex`.
+2. Configure Biber as the default bibliography compiler:
+   * Go to **Options** -> **Configure TeXstudio** -> **Build**.
+   * Change **Default Bibliography Tool** to `Biber`.
+   * Click **OK**.
+3. Compile the document:
+   * Press **F5** (Build & View) or click the green double arrow button in the toolbar.
+
+### Method 4: TeXmaker Configuration
+To compile using [TeXmaker](https://www.xm1math.net/texmaker/):
+1. Open TeXmaker and open `sample.tex`.
+2. Configure Biber command:
+   * Go to **Options** -> **Configure Texmaker** -> **Commands**.
+   * Change the **Bibtex** field from `bibtex %` to `biber %`.
+3. Set up Quick Build:
+   * Go to **Options** -> **Configure Texmaker** -> **Quick Build**.
+   * Select: `PdfLaTeX + Bibtex/Biber + PdfLaTeX (x2) + View Pdf`.
+   * Click **OK**.
+4. Compile the document:
+   * Press **F1** (Quick Build) or click the run arrow next to "Quick Build".
+
+### Method 5: Manual Terminal Compilation
+Run the following commands in sequence in your terminal:
 ```bash
 pdflatex sample.tex
 biber sample
