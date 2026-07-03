@@ -546,7 +546,7 @@
   \newcommand{\pdfanimCompressPDFExtra}[2][ebook]{\pdfanim@compresspdf{#1}{#2}}
 \fi
 
-% Custom helper for embedding MP4 videos via raw PDF Screen Annotations from scratch (no multimedia package dependency)
+% Custom helper for embedding MP4 videos via raw PDF Movie Annotations from scratch (no multimedia package dependency)
 \providecommand{\beamer@pdfannot}{\pdfannot}
 \newcommand{\embedmpfour}[3][]{%
   \leavevmode
@@ -555,24 +555,11 @@
   \@tempdimb=\ht\@tempboxa
   \@tempdimc=\dp\@tempboxa
   \beamer@pdfannot width \@tempdima height \@tempdimb depth \@tempdimc {
-    /Subtype /Screen
+    /Subtype /Movie
     /Border [0 0 0]
     /BS << /W 0 /S /S >>
     /F 4
-    /MK << /BG [1 1 1] >>   % Solid white background to prevent black margins!
-    /A <<
-      /S /Rendition
-      /R <<
-        /S /MR
-        /C <<
-          /S /M
-          /D <<
-            /F (#3)
-            /Type /Filespec
-          >>
-        >>
-      >>
-    >>
+    /Movie << /F (#3) /Aspect [1 1] /Poster true >>
   }%
   \box\@tempboxa
 }
