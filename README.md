@@ -62,10 +62,21 @@ If none are specified, the style automatically falls back to the `Pittsburgh` th
 
 ---
 
-## How to Compile
+## Compilation & Build Automation
 
-To compile the presentation with full citation support, run the following commands in your terminal:
+You can compile the presentation using three methods:
 
+### Method 1: Using the Makefile (Recommended)
+A `Makefile` is provided to automate the compilation pipeline and auxiliary file cleanup:
+*   **Compile fully**: Run `make` in the root directory.
+*   **Clean intermediate files**: Run `make clean` to delete LaTeX build artifacts.
+
+### Method 2: VS Code LaTeX Workshop Extension
+If you use VS Code with the [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) extension, the settings configured in `.vscode/settings.json` will automatically load a recipe named `pdflatex -> biber -> pdflatex x2`. 
+Just trigger a build (default shortcut: `Ctrl+Alt+B`), and the editor will compile the document and clean up auxiliary files automatically.
+
+### Method 3: Manual Terminal Compilation
+Run the following commands in sequence:
 ```bash
 pdflatex sample.tex
 biber sample
@@ -73,9 +84,12 @@ pdflatex sample.tex
 pdflatex sample.tex
 ```
 
+---
+
+## Fast Drafting / Fast Build
 For fast drafting without compiling full interactive animations:
 1. Edit `sample.tex` (or your document) to load the package with the `draftanim` flag:
    ```latex
    \usepackage[draftanim]{mucomp}
    ```
-2. Compile with `pdflatex` directly (you can bypass `biber` if citations haven't changed).
+2. Compile using `make` or `pdflatex` directly (biber is not required if citation keys haven't changed).
