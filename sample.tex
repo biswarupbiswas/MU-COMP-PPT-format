@@ -88,9 +88,9 @@
     \end{column}
     \begin{column}{0.55\textwidth}
       \centering
-      % Perfect 1:1 square video box and placeholder matching the first frame
-      \embedmpfour[width=0.6\textheight,height=0.6\textheight]{%
-        \includegraphics[width=0.6\textheight,height=0.6\textheight]{KPP_2D_WENO_poster.png}%
+      % Perfect 1:1 square video box without any PNG poster (completely vector white background using \rule)
+      \embedmpfour{%
+        {\color{white}\rule{0.6\textheight}{0.6\textheight}}%
       }{KPP_2D_WENO.mp4}
 
       \vskip0.5em
@@ -98,6 +98,7 @@
     \end{column}
   \end{columns}
 \end{frame}
+
 
 
 
