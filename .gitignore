@@ -1,0 +1,17 @@
+# LaTeX auxiliary files
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+
+# BibLaTeX/Biber auxiliary files
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+
+# Synctex
+*.synctex.gz

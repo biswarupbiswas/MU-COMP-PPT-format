@@ -1,0 +1,77 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage{mucomp}
+
+% Add bibliography resource
+\addbibresource{references.bib}
+
+\title{Computational Methods in Relativistic Hydrodynamics}
+\subtitle{Applications to Astrophysical Mergers and Explosions}
+\author[Biswas]{Biswarup Biswas}
+\coauthors{the MU Computational Maths Group}
+\institute{Department of Mathematics, Mahindra University}
+\conference{National Conference on Computational Mathematics}
+\minisymposium{Special Session on Numerical Relativity}
+\date{\today}
+\titlegraphic{\includegraphics[height=1.0cm]{Mahindra_University_logo.png}}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\begin{frame}{Introduction to Relativistic Gases}
+  \begin{itemize}
+    \item Relativistic hydrodynamics (RHD) plays a crucial role in modeling high-energy astrophysical phenomena.
+    \item Examples include binary neutron star mergers\fcite{baiotti2017binary}.
+    \item The thermodynamic properties of a relativistic gas are often modeled using the Synge equation of state\fcite{synge1958relativistic}.
+  \end{itemize}
+\end{frame}
+
+\section{Numerical Methods}
+
+\begin{frame}{Mathematical Formulations}
+  \begin{theorem}[Conservation Laws]
+    The governing equations of relativistic hydrodynamics can be written as a system of hyperbolic conservation laws:
+    \[
+      \frac{\partial \mathbf{U}}{\partial t} + \sum_{i=1}^3 \frac{\partial \mathbf{F}^i(\mathbf{U})}{\partial x^i} = \mathbf{S}(\mathbf{U})
+    \]
+    where $\mathbf{U}$ is the vector of conserved variables.
+  \end{theorem}
+  
+  \begin{definition}[Primitive Variables]
+    The primitive variables (e.g., density $\rho$, velocity $\mathbf{v}$, and pressure $p$) must be recovered from the conserved variables $\mathbf{U}$ at each time step, typically requiring numerical root-finding methods.
+  \end{definition}
+\end{frame}
+
+\section{Simulation \& Visualization}
+
+\begin{frame}{Simulation of 2D Relativistic Flows}
+  \begin{columns}
+    \begin{column}{0.45\textwidth}
+      \textbf{Dynamics of RHD Shockwaves}
+      \begin{itemize}
+        \item Relativistic shockwaves exhibit complex interface instability.
+        \item High-order WENO schemes are employed to resolve the shocks without spurious oscillations.
+        \item The animation on the right shows the evolution of the density field over 21 frames.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.55\textwidth}
+      % Demonstration of the PDF animation helper \pdfanim
+      % Usage: \pdfanim[options]{prefix}{first}{last}
+      \centering
+      \pdfanim[width=\textwidth,fps=5,loop=true,autoplay=true]{RP2D1_frames/frame_}{0001}{0021}
+      \vskip0.5em
+      \scriptsize{Figure: 2D Relativistic flow evolution (interactive animation).}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Conclusion}
+  \begin{itemize}
+    \item Robust numerical schemes are essential for simulating relativistic flows.
+    \item The \texttt{mucomp} package provides support for standard theme styles, math blocks, footnoting/citations, and animations.
+  \end{itemize}
+\end{frame}
+
+\end{document}
