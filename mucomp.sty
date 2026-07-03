@@ -56,6 +56,7 @@
 \RequirePackage{microtype}
 \RequirePackage{etoolbox}
 \RequirePackage{xcolor}
+\RequirePackage{muvideo}
 
 \definecolor{citeteal}{HTML}{008080}
 % Gold for title page dividers
@@ -545,24 +546,6 @@
   %     -dGrayImageResolution=150 -dMonoImageResolution=150}
   \newcommand{\pdfanimCompressPDFExtra}[2][ebook]{\pdfanim@compresspdf{#1}{#2}}
 \fi
-
-% Custom helper for embedding MP4 videos via raw PDF Movie Annotations from scratch (no multimedia package dependency)
-\providecommand{\beamer@pdfannot}{\pdfannot}
-\newcommand{\embedmpfour}[3][]{%
-  \leavevmode
-  \setbox\@tempboxa=\hbox{#2}%
-  \@tempdima=\wd\@tempboxa
-  \@tempdimb=\ht\@tempboxa
-  \@tempdimc=\dp\@tempboxa
-  \beamer@pdfannot width \@tempdima height \@tempdimb depth \@tempdimc {
-    /Subtype /Movie
-    /Border [0 0 0]
-    /BS << /W 0 /S /S >>
-    /F 4
-    /Movie << /F (#3) /Aspect [1 1] /Poster true >>
-  }%
-  \box\@tempboxa
-}
 
 \makeatother
 
