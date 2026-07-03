@@ -1,6 +1,6 @@
-# Mahindra University Computational Mathematics Presentation Theme (`mucomp`)
+# MU Computational Mathematics Group Presentation Theme (`mucomp`)
 
-This repository contains the official LaTeX Beamer presentation template and style package (`mucomp.sty`) for the **Mahindra University Computational Mathematics** research group. It is designed to produce clean, professional, and interactive slides for academic presentations, seminars, and conferences.
+This repository contains the official LaTeX Beamer presentation template and style package (`mucomp.sty`) for the **MU Computational Mathematics** research group. It is designed to produce clean, professional, and interactive slides for academic presentations, seminars, and conferences.
 
 ## Repository Contents
 
@@ -8,7 +8,7 @@ This repository contains the official LaTeX Beamer presentation template and sty
 *   **`sample.tex`**: A sample presentation showing all features of the `mucomp` template.
 *   **`sample.pdf`**: The precompiled sample presentation output.
 *   **`references.bib`**: The bibliography file containing citation entries.
-*   **`Mahindra_University_logo.png`**: The university logo used on the title slide.
+*   **`MU_logo.png`**: The university logo used on the title slide.
 *   **`RP2D1_frames/`**: Directory containing frame assets (PNGs) for showcasing the PDF animation helper.
 *   **`.gitignore`**: Excludes temporary and auxiliary files generated during LaTeX compilation.
 
