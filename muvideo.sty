@@ -10,19 +10,32 @@
 % #3 = MP4 video filename
 \newcommand{\embedmpfour}[3][]{%
   \leavevmode
-  % Pack the vector graphics box to calculate bounding box dimensions
+  % Embed the MP4 video stream directly into the PDF document
+  \immediate\pdfobj stream file {#3}%
+  \edef\videoobj{\the\pdflastobj}%
+  % Set up the vector placeholder sizing
   \setbox\@tempboxa=\hbox{#2}%
   \@tempdima=\wd\@tempboxa
   \@tempdimb=\ht\@tempboxa
   \@tempdimc=\dp\@tempboxa
-  % Write a borderless PDF Movie Annotation matching the exact box size.
-  % /Poster false ensures the viewer does NOT overlay a black box over our vector graphics.
+  % Register a page-action to automatically play the movie when the slide is opened
+  \global\pdfpageattr{/AA << /O << /S /Movie /T (muvideo@#3) /Operation /Play >> >>}%
+  % Create the Movie annotation with embedded stream and a matching title (/T)
   \beamer@pdfannot width \@tempdima height \@tempdimb depth \@tempdimc {
     /Subtype /Movie
+    /T (muvideo@#3)
     /Border [0 0 0]
     /BS << /W 0 /S /S >>
     /F 4
-    /Movie << /F (#3) /Aspect [1 1] /Poster false >>
+    /Movie <<
+      /F <<
+        /Type /Filespec
+        /F (#3)
+        /EF << /F \videoobj\space 0 R >>
+      >>
+      /Aspect [1 1]
+      /Poster false
+    >>
     /A << >>
   }%
   % Render the underlying vector graphics card
