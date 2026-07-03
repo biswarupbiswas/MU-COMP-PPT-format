@@ -260,6 +260,23 @@
 }
 
 \makeatletter
+% Custom hyperlinked citation command
+\DeclareCiteCommand{\mucomp@hyper@fullcite}
+  {\defcounter{maxnames}{2}\usebibmacro{prenote}}
+  {%
+    \iffieldundef{doi}{%
+      \iffieldundef{url}{%
+        \usedriver{\DeclareNameAlias{sortname}{default}}{\thefield{entrytype}}%
+      }{%
+        \href{\strfield{url}}{\usedriver{\DeclareNameAlias{sortname}{default}}{\thefield{entrytype}}}%
+      }%
+    }{%
+      \href{https://doi.org/\strfield{doi}}{\usedriver{\DeclareNameAlias{sortname}{default}}{\thefield{entrytype}}}%
+    }%
+  }
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
 \DeclareCiteCommand{\footfullcite}[\mkbibfootnote]
   {\defcounter{maxnames}{2}\usebibmacro{prenote}}
   {\usedriver{\DeclareNameAlias{sortname}{default}}{\thefield{entrytype}}}
@@ -276,41 +293,30 @@
 % Reset footnote counter at every frame → marks always start at 1
 \AtBeginEnvironment{frame}{\setcounter{footnote}{0}}
 
-% \fcite{k1,k2,...} — prints ^{1,2,3} then places each footnotetext
+% \fcite{k1,k2,...} — prints superscript then places each footnotetext (with deduplication)
 \newcounter{bb@fnstart}
 \makeatletter
 \newcommand{\fcite}[1]{%
-  % Save current footnote counter
-  \setcounter{bb@fnstart}{\value{footnote}}%
-  % Pass 1: step counter for each key and build comma-separated mark string
   \def\bb@markstr{}%
   \def\bb@sep{}%
   \@for\bb@k:=#1\do{%
-    \stepcounter{footnote}%
-    \edef\bb@markstr{\bb@markstr\bb@sep\thefootnote}%
+    \expandafter\ifx\csname mucomp@fn@\insertframenumber @\bb@k\endcsname\relax
+      % First time cited on this frame
+      \stepcounter{footnote}%
+      \expandafter\edef\csname mucomp@fn@\insertframenumber @\bb@k\endcsname{\thefootnote}%
+      \edef\bb@markstr{\bb@markstr\bb@sep\thefootnote}%
+      \footnotetext[\value{footnote}]{\defcounter{maxnames}{2}\mucomp@hyper@fullcite{\bb@k}}%
+    \else
+      % Already cited on this frame, reuse footnote number
+      \edef\bb@tempfn{\csname mucomp@fn@\insertframenumber @\bb@k\endcsname}%
+      \edef\bb@markstr{\bb@markstr\bb@sep\bb@tempfn}%
+    \fi
     \def\bb@sep{,}%
   }%
-  % Print all marks as one superscript
-  % \textsuperscript{\bb@markstr}%
   {\color{citeteal}\textsuperscript{\bb@markstr}}%
-  % Pass 2: reset counter and place each footnotetext
-  \setcounter{footnote}{\value{bb@fnstart}}%
-  \@for\bb@k:=#1\do{%
-    \stepcounter{footnote}%
-    \footnotetext[\value{footnote}]{%
-      \defcounter{maxnames}{2}\fullcite{\bb@k}%
-    }%
-  }%
 }
 
-% \fcitetext{k1,k2,...} — places footnote texts only (pair with \footnotemark)
-%   Assumes it is called immediately after the matching run of \footnotemark's,
-%   with nothing else bumping \value{footnote} in between. It rewinds the
-%   counter by the number of keys given (undoing what those \footnotemark's
-%   already advanced) and then replays forward, so the footnotetext numbers
-%   land on the same marks \footnotemark already printed — the same
-%   rewind-and-replay trick \fcite uses, so numbering stays frame-local
-%   instead of drifting from the global footnote counter.
+% \fcitetext{k1,k2,...} — places footnote texts only (pair with \footnotemark, with hyperlinks)
 \newcounter{bb@nkeys}
 \newcommand{\fcitetext}[1]{%
   \setcounter{bb@fnstart}{\value{footnote}}%
@@ -321,7 +327,7 @@
   \@for\bb@k:=#1\do{%
     \stepcounter{footnote}%
     \footnotetext[\value{footnote}]{%
-      \defcounter{maxnames}{2}\fullcite{\bb@k}%
+      \defcounter{maxnames}{2}\mucomp@hyper@fullcite{\bb@k}%
     }%
   }%
 }
