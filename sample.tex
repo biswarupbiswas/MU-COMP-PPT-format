@@ -76,49 +76,6 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Embedded Video: WENO Simulation}
-  \begin{columns}
-    \begin{column}{0.45\textwidth}
-      \textbf{KPP 2D WENO Simulation}
-      \begin{itemize}
-        \item This slide displays the compiled MP4 video directly.
-        \item The simulation models 2D wave propagation using high-order WENO schemes.
-        \item Click on the video on the right to start playing/pausing it.
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.55\textwidth}
-      \centering
-      % Clean vector play card placeholder (no PNG image files used)
-      \embedmpfour{%
-        \begin{pgfpicture}
-          % Draw a light gray background card
-          \pgfsetfillcolor{black!5}
-          \pgfpathrectangle{\pgfpointorigin}{\pgfpoint{0.6\textheight}{0.6\textheight}}
-          \pgfusepath{fill}
-          % Draw a thin gray border
-          \pgfsetlinewidth{1pt}
-          \pgfsetcolor{black!15}
-          \pgfpathrectangle{\pgfpointorigin}{\pgfpoint{0.6\textheight}{0.6\textheight}}
-          \pgfusepath{stroke}
-          % Draw a large play icon in the center
-          \pgfsetcolor{citeteal}
-          \pgftransformshift{\pgfpoint{0.3\textheight}{0.3\textheight}}
-          \pgftext{\scalebox{4}{$\blacktriangleright$}}
-        \end{pgfpicture}%
-      }{KPP_2D_WENO.mp4}
-
-
-      \vskip0.5em
-      \scriptsize{Video: KPP 2D WENO simulation (click to play).}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-
-
-
-
-
 \begin{frame}{Conclusion}
   \begin{itemize}
     \item Robust numerical schemes are essential for simulating relativistic flows.
