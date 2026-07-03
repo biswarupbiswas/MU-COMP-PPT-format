@@ -76,6 +76,29 @@
   \end{columns}
 \end{frame}
 
+\begin{frame}{Embedded Video: WENO Simulation}
+  \begin{columns}
+    \begin{column}{0.45\textwidth}
+      \textbf{KPP 2D WENO Simulation}
+      \begin{itemize}
+        \item This slide displays the compiled MP4 video directly.
+        \item The simulation models 2D wave propagation using high-order WENO schemes.
+        \item Click on the placeholder image on the right to start playing the video.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.55\textwidth}
+      \centering
+      % Usage: \embedmpfour[options]{placeholder_text_or_graphic}{video_file}
+      \embedmpfour[width=\textwidth,height=0.6\textheight]{%
+        \includegraphics[width=\textwidth,height=0.6\textheight]{RP2D1_frames/frame_0001.png}%
+      }{KPP_2D_WENO.mp4}
+
+      \vskip0.5em
+      \scriptsize{Video: 2D Relativistic simulation (click to play).}
+    \end{column}
+  \end{columns}
+\end{frame}
+
 \begin{frame}{Conclusion}
   \begin{itemize}
     \item Robust numerical schemes are essential for simulating relativistic flows.

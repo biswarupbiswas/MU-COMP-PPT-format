@@ -56,6 +56,8 @@
 \RequirePackage{microtype}
 \RequirePackage{etoolbox}
 \RequirePackage{xcolor}
+\RequirePackage{multimedia}
+
 \definecolor{citeteal}{HTML}{008080}
 % Gold for title page dividers
 \definecolor{titlegold}{HTML}{B8962E}
@@ -546,5 +548,8 @@
 \fi
 
 \makeatother
+
+% Helper for embedding MP4 videos via Beamer's multimedia package
+\newcommand{\embedmpfour}[3][]{\movie[showcontrols,poster,#1]{#2}{#3}}
 
 \endinput
