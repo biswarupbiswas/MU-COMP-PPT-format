@@ -10,8 +10,6 @@
 
 % Add bibliography resource
 \addbibresource{references.bib}
-\newlength{\videowidth}
-
 
 \title{Computational Methods in Relativistic Hydrodynamics}
 \subtitle{Applications to Astrophysical Mergers and Explosions}
@@ -78,7 +76,6 @@
   \end{columns}
 \end{frame}
 
-\setlength{\videowidth}{\dimexpr 0.6\textheight - 20pt\relax}
 \begin{frame}{Embedded Video: WENO Simulation}
   \begin{columns}
     \begin{column}{0.45\textwidth}
@@ -86,14 +83,14 @@
       \begin{itemize}
         \item This slide displays the compiled MP4 video directly.
         \item The simulation models 2D wave propagation using high-order WENO schemes.
-        \item Click on the placeholder image on the right to start playing the video.
+        \item Click on the video on the right to start playing/pausing it.
       \end{itemize}
     \end{column}
     \begin{column}{0.55\textwidth}
       \centering
-      % Compensate for the 20pt controls bar to get a perfect square video aspect ratio
-      \embedmpfour[width=\videowidth,height=0.6\textheight]{%
-        \includegraphics[width=\videowidth,height=\videowidth]{RP2D1_frames/frame_0001.png}%
+      % Perfect 1:1 square video box and placeholder (without showcontrols to avoid black letterboxing)
+      \embedmpfour[width=0.6\textheight,height=0.6\textheight]{%
+        \includegraphics[width=0.6\textheight,height=0.6\textheight]{RP2D1_frames/frame_0001.png}%
       }{KPP_2D_WENO.mp4}
 
       \vskip0.5em
@@ -101,6 +98,7 @@
     \end{column}
   \end{columns}
 \end{frame}
+
 
 
 \begin{frame}{Conclusion}
