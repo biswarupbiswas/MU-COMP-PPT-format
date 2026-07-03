@@ -33,10 +33,20 @@
 \newif\ifpdfanim@draft
 
 % ==============================================================================
-% 1. THEME  — Pittsburgh (minimal: no header, thin footline) + beaver colors
+% 1. THEME  — default theme configuration (Pittsburgh + beaver) if none specified
 % ==============================================================================
-\usetheme{Pittsburgh}
-\usecolortheme{beaver}
+\AtBeginDocument{%
+  \ifdefined\beamer@themelist
+    \def\mucomp@defaulttheme{default}%
+    \ifx\beamer@themelist\mucomp@defaulttheme
+      \usetheme{Pittsburgh}%
+      \usecolortheme{beaver}%
+    \fi
+  \else
+    \usetheme{Pittsburgh}%
+    \usecolortheme{beaver}%
+  \fi
+}
 
 % ==============================================================================
 % 2. DEPENDENCIES
