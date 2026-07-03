@@ -47,6 +47,21 @@ Embed high-speed sequence animations using the `\pdfanim` command:
 
 ---
 
+## Customizing Themes
+
+You can easily change the Beamer theme and colortheme by adding `\usetheme` and `\usecolortheme` in your `.tex` file directly before loading `\usepackage{mucomp}`.
+
+A list of popular pre-configured options is included as comments in the header of `sample.tex`:
+*   `\usetheme{Madrid}`
+*   `\usetheme{AnnArbor} \usecolortheme{wolverine}`
+*   `\usetheme{CambridgeUS}`
+*   `\usetheme{Frankfurt} \usecolortheme{seahorse}`
+*   `\usetheme{Warsaw}`
+
+If none are specified, the style automatically falls back to the `Pittsburgh` theme with the `beaver` colortheme.
+
+---
+
 ## How to Compile
 
 To compile the presentation with full citation support, run the following commands in your terminal:
