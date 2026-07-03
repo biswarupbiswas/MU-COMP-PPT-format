@@ -10,6 +10,8 @@
 
 % Add bibliography resource
 \addbibresource{references.bib}
+\newlength{\videowidth}
+
 
 \title{Computational Methods in Relativistic Hydrodynamics}
 \subtitle{Applications to Astrophysical Mergers and Explosions}
@@ -76,6 +78,7 @@
   \end{columns}
 \end{frame}
 
+\setlength{\videowidth}{\dimexpr 0.6\textheight - 20pt\relax}
 \begin{frame}{Embedded Video: WENO Simulation}
   \begin{columns}
     \begin{column}{0.45\textwidth}
@@ -88,16 +91,17 @@
     \end{column}
     \begin{column}{0.55\textwidth}
       \centering
-      \embedmpfour[width=0.6\textheight,height=0.6\textheight]{%
-        \includegraphics[width=0.6\textheight,height=0.6\textheight]{RP2D1_frames/frame_0001.png}%
+      % Compensate for the 20pt controls bar to get a perfect square video aspect ratio
+      \embedmpfour[width=\videowidth,height=0.6\textheight]{%
+        \includegraphics[width=\videowidth,height=\videowidth]{RP2D1_frames/frame_0001.png}%
       }{KPP_2D_WENO.mp4}
-
 
       \vskip0.5em
       \scriptsize{Video: 2D Relativistic simulation (click to play).}
     \end{column}
   \end{columns}
 \end{frame}
+
 
 \begin{frame}{Conclusion}
   \begin{itemize}
