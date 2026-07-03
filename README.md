@@ -16,8 +16,8 @@ This repository contains the official LaTeX Beamer presentation template and sty
 
 ## Features
 
-### 1. Unified Visual Theme & Fonts
-*   **Theme Base**: Built on the minimal `Pittsburgh` Beamer theme with `beaver` color schemes.
+### 1. Configurable Beamer Themes & Fonts
+*   **Customizable Theme**: Users can load their own Beamer theme and colortheme in the `.tex` file (e.g., `\usetheme{Madrid}` or `\usetheme{AnnArbor}`). If no theme or colortheme is specified, `mucomp` automatically defaults to the minimal `Pittsburgh` Beamer theme with the `beaver` color scheme.
 *   **Typography**: Uses `Lato` as the default sans-serif font family and `newtxmath` for elegant mathematical typesetting.
 *   **Clean Layout**: Thin footers, centered native title layout, and elegant title page divider lines in gold (`#B8962E`).
 
