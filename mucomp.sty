@@ -244,11 +244,12 @@
 }
 
 \setbeamerfont{footnote}{size=\scriptsize}
+\setbeamercolor{footnote mark}{fg=citeteal}
 
 \setbeamertemplate{footnote}{%
   \parindent0pt\noindent\raggedright
   \usebeamerfont{footnote}%
-  \usebeamercolor[fg]{structure}\insertfootnotemark\normalcolor
+  \usebeamercolor[fg]{footnote mark}\insertfootnotemark\normalcolor
   \hspace{0.4em}\insertfootnotetext\par
   \vskip1.2ex
 }
